@@ -315,7 +315,8 @@ def main(args):
         
         if task_id==0:
             #model = AlexNet(taskcla).to(device)
-            model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
+            #model = torch.hub.load('pytorch/vision:v0.10.0', 'alexnet', pretrained=True)
+            model = torch.models.alexnet(pretrained=True)
             print ('Model parameters ---')
             for k_t, (m, param) in enumerate(model.named_parameters()):
                 print (k_t,m,param.shape)
