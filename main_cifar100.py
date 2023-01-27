@@ -312,6 +312,9 @@ def main(args):
         print ('-'*40)
         print ('Task ID :{} | Learning Rate : {}'.format(task_id, lr))
         print ('-'*40)
+
+        print(xtrain)
+        print(xtrain.size())
         
         if task_id==0:
             #model = AlexNet(taskcla).to(device)
