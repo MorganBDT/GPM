@@ -431,12 +431,12 @@ def main(args):
     print('[Elapsed time = {:.1f} ms]'.format((time.time()-tstart)*1000))
     print('-'*50)
     # Plots
-    array = acc_matrix
-    df_cm = pd.DataFrame(array, index = [i for i in ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"]],
-                      columns = [i for i in ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"]])
-    sn.set(font_scale=1.4) 
-    sn.heatmap(df_cm, annot=True, annot_kws={"size": 10})
-    plt.show()
+    # array = acc_matrix
+    # df_cm = pd.DataFrame(array, index = [i for i in ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"]],
+    #                   columns = [i for i in ["T1","T2","T3","T4","T5","T6","T7","T8","T9","T10"]])
+    # sn.set(font_scale=1.4)
+    # sn.heatmap(df_cm, annot=True, annot_kws={"size": 10})
+    # plt.show()
 
 
 if __name__ == "__main__":
