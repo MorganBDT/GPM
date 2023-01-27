@@ -21,7 +21,6 @@ def get(seed=0,pc_valid=0.10):
 
         # CIFAR100
         dat={}
-        print("ABOUT TO MAKE DATASET")
         dat['train']=datasets.CIFAR100(cf100_dir,train=True,download=True,transform=transforms.Compose([transforms.Resize([224, 224]), transforms.ToTensor(),transforms.Normalize(mean,std)]))
         dat['test']=datasets.CIFAR100(cf100_dir,train=False,download=True,transform=transforms.Compose([transforms.Resize([224, 224]), transforms.ToTensor(),transforms.Normalize(mean,std)]))
         # dat['train'] = datasets.CIFAR100(cf100_dir,train=True,download=False,transform=transforms.Compose([transforms.ToTensor()]))
