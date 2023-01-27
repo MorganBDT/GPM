@@ -11,7 +11,7 @@ file_dir = './data/binary_cifar100'
 def get(seed=0,pc_valid=0.10):
     data={}
     taskcla=[]
-    size=[3,32,32]
+    size=[3,224,224]
 
     if not os.path.isdir(file_dir):
         os.makedirs(file_dir)
@@ -21,8 +21,8 @@ def get(seed=0,pc_valid=0.10):
 
         # CIFAR100
         dat={}
-        dat['train']=datasets.CIFAR100(cf100_dir,train=True,download=True,transform=transforms.Compose([transforms.ToTensor(),transforms.Normalize(mean,std)]))
-        dat['test']=datasets.CIFAR100(cf100_dir,train=False,download=True,transform=transforms.Compose([transforms.ToTensor(),transforms.Normalize(mean,std)]))
+        dat['train']=datasets.CIFAR100(cf100_dir,train=True,download=True,transform=transforms.Compose([transforms.Resize(size[1:]), transforms.ToTensor(),transforms.Normalize(mean,std)]))
+        dat['test']=datasets.CIFAR100(cf100_dir,train=False,download=True,transform=transforms.Compose(transforms.Resize(size[1:]), [transforms.ToTensor(),transforms.Normalize(mean,std)]))
         # dat['train'] = datasets.CIFAR100(cf100_dir,train=True,download=False,transform=transforms.Compose([transforms.ToTensor()]))
         # dat['test']  = datasets.CIFAR100(cf100_dir,train=False,download=False,transform=transforms.Compose([transforms.ToTensor()]))
         for n in range(10):
