@@ -34,6 +34,7 @@ def get(seed=0,pc_valid=0.10):
         for s in ['train','test']:
             loader=torch.utils.data.DataLoader(dat[s],batch_size=1,shuffle=False)
             for image,target in loader:
+                print(image.size())
                 n=target.numpy()[0]
                 nn=(n//10)
                 data[nn][s]['x'].append(image) # 255 

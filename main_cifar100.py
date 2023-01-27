@@ -313,7 +313,7 @@ def main(args):
         print ('Task ID :{} | Learning Rate : {}'.format(task_id, lr))
         print ('-'*40)
 
-        print(xtrain)
+        print("Size of images:")
         print(xtrain.size())
         
         if task_id==0:
