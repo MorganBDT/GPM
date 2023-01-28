@@ -329,7 +329,7 @@ def main(args):
             feature_list =[]
             optimizer = optim.SGD(model.parameters(), lr=lr)
 
-            for epoch in range(1, args.n_epochs+1):
+            for epoch in range(1, args.n_epochs_1st_task+1):
                 # Train
                 clock0=time.time()
                 train(args, model, device, xtrain, ytrain, optimizer, criterion, k)
@@ -452,6 +452,8 @@ if __name__ == "__main__":
                         help='input batch size for testing (default: 64)')
     parser.add_argument('--n_epochs', type=int, default=200, metavar='N',
                         help='number of training epochs/task (default: 200)')
+    parser.add_argument('--n_epochs_1st_task', type=int, default=-1, metavar='N',
+                        help='number of epochs for the first task (default: match n_epochs)') # if at default, set to args.n_epochs
     parser.add_argument('--seed', type=int, default=1, metavar='S',
                         help='random seed (default: 1)')
     parser.add_argument('--pc_valid',default=0.05,type=float,
@@ -468,8 +470,12 @@ if __name__ == "__main__":
     parser.add_argument('--lr_factor', type=int, default=2, metavar='LRF',
                         help='lr decay factor (default: 2)')
 
-
     args = parser.parse_args()
+
+    # If number of epochs in 1st task not specified, just set to match n_epochs
+    if args.n_epochs_1st_task < 0:
+        args.n_epochs_1st_task = args.n_epochs
+
     print('='*100)
     print('Arguments =')
     for arg in vars(args):
